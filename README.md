@@ -69,7 +69,7 @@ Puis il redimensionne les fichiers JPEG du dossier `source` aux tailles suivante
 
 Et enfin il optimise les images.
 
-Toutes les images optimisées sont stockées dans les dossier `images/*`.
+Toutes les images optimisées sont stockées dans les dossiers `images/*`.
 Les images sources ne sont pas modifiées.
 
 Pour lancer le script :
@@ -87,6 +87,10 @@ Pour lancer le script :
 - [imagemin/imagemin-cli: Minify images](https://github.com/imagemin/imagemin-cli)
 
 - [How to Optimize and Compress JPEG or PNG Images in Linux Commandline](https://www.tecmint.com/optimize-and-compress-jpeg-or-png-batch-images-linux-commandline/)
+
+- [<img>: The Image Embed element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)
+- [<picture>: The Picture element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture)
+- [Picturefill](http://scottjehl.github.io/picturefill/#examples)
 
 ## Médias
 
