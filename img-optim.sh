@@ -1,30 +1,30 @@
 #!/bin/bash
 
-mkdir -p images/xs
-mkdir -p images/sm
-mkdir -p images/md
-mkdir -p images/lg
+mkdir -p img/xs
+mkdir -p img/sm
+mkdir -p img/md
+mkdir -p img/lg
 
 echo "mogrify xs"
-mogrify -path images/xs/ -resize 320x200 sources/*.jpg
+mogrify -path img/xs/ -resize 320x200 img-src/*.jpg
 
 echo "mogrify sm"
-mogrify -path images/sm/ -resize 640x480 sources/*.jpg
+mogrify -path img/sm/ -resize 640x480 img-src/*.jpg
 
 echo "mogrify md"
-mogrify -path images/md/ -resize 1024x768 sources/*.jpg
+mogrify -path img/md/ -resize 1024x768 img-src/*.jpg
 
 echo "mogrify lg"
-mogrify -path images/lg/ -resize 1920x1080 sources/*.jpg
+mogrify -path img/lg/ -resize 1920x1080 img-src/*.jpg
 
 echo "imagemin xs"
-npx imagemin --out-dir=images/xs/ images/xs/*
+npx imagemin --out-dir=img/xs/ img/xs/*
 
 echo "imagemin sm"
-npx imagemin --out-dir=images/sm/ images/sm/*
+npx imagemin --out-dir=img/sm/ img/sm/*
 
 echo "imagemin md"
-npx imagemin --out-dir=images/md/ images/md/*
+npx imagemin --out-dir=img/md/ img/md/*
 
 echo "imagemin lg"
-npx imagemin --out-dir=images/lg/ images/lg/*
+npx imagemin --out-dir=img/lg/ img/lg/*

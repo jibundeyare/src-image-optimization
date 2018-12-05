@@ -3,19 +3,11 @@
 ## Prérequis
 
 - le package debian `imagemagick`
-- le package debian `nodejs` et `npm`
 - le package nodejs `imagemin-cli`
 
 Pour installer `imagemagick` :
 
     sudo apt-get install imagemagick
-
-Pour installer `nodejs` et `npm` :
-
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    sudo apt-get install -y nodejs
-
-Attention : la branche 10.x de nodejs est une LTS alors que la branche 11.x ne l'est pas.
 
 Pour installer `imagemin-cli` :
 
@@ -26,41 +18,41 @@ Pour installer `imagemin-cli` :
 
 Redimensionner en 640 x 480, en respectant les proportions :
 
-    mogrify -path output/ -resize 640x480 images/*.jpg
+    mogrify -path img/ -resize 640x480 img-src/*.jpg
 
 Redimensionner en 640 de large (sans limite pour la hauteur), en respectant les proportions :
 
-    mogrify -path output/ -resize 640 images/*.jpg
+    mogrify -path img/ -resize 640 img-src/*.jpg
 
 Redimensionner en 480 de haut (sans limite pour la largeur), en respectant les proportions :
 
-    mogrify -path output/ -resize x480 images/*.jpg
+    mogrify -path img/ -resize x480 img-src/*.jpg
 
 Forcer un redimensionnement en 640 x 480, sans respecter les proportions :
 
-    mogrify -path output/ -resize 640x480! images/*.jpg
+    mogrify -path img/ -resize 640x480! img-src/*.jpg
 
 ## Optimiser des images avec Imagemin
 
-Pour optimiser les images du dossier `images` et créer les nouvelles images dans le dossier `build` :
+Pour optimiser les images du dossier `img` et les écraser avec les nouvelles images :
 
-    npx imagemin --out-dir=build/ images/*
+    npx imagemin --out-dir=img/ img/*
 
-Pour optimiser les images du dossier `images` et les écraser avec les nouvelles images :
+Pour optimiser les images du dossier `img` et créer les nouvelles images dans le dossier `build` :
 
-    npx imagemin --out-dir=images/ images/*
+    npx imagemin --out-dir=build/ img/*
 
 ## Script bash
 
 Ce script créé l'arborescence suivante :
 
-    images/
+    img/
         lg/
         md/
         sm/
         xs/
 
-Puis il redimensionne les fichiers JPEG du dossier `source` aux tailles suivantes :
+Puis il redimensionne les fichiers `*.jpg` du dossier `img-src` aux tailles suivantes :
 
 - 320 x 200
 - 640 x 480
@@ -69,7 +61,7 @@ Puis il redimensionne les fichiers JPEG du dossier `source` aux tailles suivante
 
 Et enfin il optimise les images.
 
-Toutes les images optimisées sont stockées dans les dossiers `images/*`.
+Toutes les images optimisées sont stockées dans les dossiers `img/*/`.
 Les images sources ne sont pas modifiées.
 
 Pour lancer le script :
