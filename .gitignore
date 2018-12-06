@@ -1,1 +1,3 @@
+/img/*
+!img/.gitkeep
 /node_modules/*
