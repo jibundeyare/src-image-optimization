@@ -32,6 +32,20 @@ Forcer un redimensionnement en 640 x 480, sans respecter les proportions :
 
     mogrify -path img/ -resize 640x480! img-src/*.jpg
 
+## Recadrage des images avec Image Magick
+
+Découper 320px en largeur au centre (sans découper en hauteur) :
+
+    mogrify -path img/ -gravity center -crop 320x+0+0 +repage img/*.jpg
+
+Découper 400px en hauteur au centre (sans découper en largeur) :
+
+    mogrify -path img/ -gravity center -crop x400+0+0 +repage img/*.jpg
+
+Découper 320px en largeur et 200px en hauteur au centre :
+
+    mogrify -path img/ -gravity center -crop 320x200+0+0 +repage img/*.jpg
+
 ## Optimiser des images avec Imagemin
 
 Pour optimiser les images du dossier `img` et les écraser avec les nouvelles images :
@@ -42,15 +56,29 @@ Pour optimiser les images du dossier `img` et créer les nouvelles images dans l
 
     npx imagemin --out-dir=build/ img/*
 
-## Script bash
+## Scripts bash
+
+Les scripts bash `img-optim-simple.sh` et `img-optim-advanced.sh` sont des exemples de ce qu'il est possible d'automatiser.
+
+Les sections `# user settings` permettent de personnaliser les réglages pour un projet particulier.
+
+Il faut voir ces scripts comme des points de départ pour automatiser la génération d'images optimiséss.
+Il faudra donc surement les adapter à vos besoins.
+
+### Script bash `img-optim-simple.sh`
 
 Ce script créé l'arborescence suivante :
 
     img/
-        lg/
-        md/
-        sm/
-        xs/
+      lg/
+      lg-bg/
+      md/
+      md-bg/
+      sm/
+      sm-bg/
+      xl/
+      xl-bg/
+      xs/
 
 Puis il redimensionne les fichiers `*.jpg` du dossier `img-src` aux tailles suivantes :
 
@@ -66,15 +94,49 @@ Les images sources ne sont pas modifiées.
 
 Pour lancer le script :
 
-    ./img-optim.sh
+    ./img-optim-simple.sh
+
+Pour tester le résultat, voir les fichiers `index.html` et `css/style.css`.
+
+### Script bash avancé `img-optim-advanced.sh`
+
+Ce script créé l'arborescence suivante :
+
+    img/
+      lg/
+      lg-bg/
+      md/
+      md-bg/
+      sm/
+      sm-bg/
+      xl/
+      xl-bg/
+      xs/
+
+Puis il redimensionne les fichiers `*.jpg` du dossier `img-src` en fonction d'une proportion d'image (choisie par l'utilisateur) et des valeurs de breakpoints de Twitter Bootstrap.
+
+Et enfin il optimise les images.
+
+Toutes les images optimisées sont stockées dans les dossiers `img/*/`.
+Les images sources ne sont pas modifiées.
+
+Pour lancer le script :
+
+    ./img-optim-advanced.sh
+
+Pour tester le résultat, voir les fichiers `advanced.html` et `css/advanced.css`.
 
 ## Doc
 
-- [Efficient Image Resizing With ImageMagick — Smashing Magazine](https://www.smashingmagazine.com/2015/06/efficient-image-resizing-with-imagemagick/)
-- [Command-line Processing @ ImageMagick](http://www.imagemagick.org/script/command-line-processing.php)
+- [Display resolution - Wikipedia](https://en.wikipedia.org/wiki/Display_resolution)
+- [Most Common Aspect Ratio? - Photography Stack Exchange](https://photo.stackexchange.com/questions/33713/most-common-aspect-ratio)
 
-- [Installing Node.js via package manager | Node.js](https://nodejs.org/en/download/package-manager/)
-- [distributions/README.md at master · nodesource/distributions](https://github.com/nodesource/distributions/blob/master/README.md)
+- [A Comparison of JPEG Compression Levels and Recompression](https://blog.codinghorror.com/a-comparison-of-jpeg-compression-levels-and-recompression/)
+
+- [Efficient Image Resizing With ImageMagick — Smashing Magazine](https://www.smashingmagazine.com/2015/06/efficient-image-resizing-with-imagemagick/)
+- [Cutting and Bordering -- IM v6 Examples](https://imagemagick.org/Usage/crop/)
+- [Command-line Options @ ImageMagick](https://imagemagick.org/script/command-line-options.php)
+- [Command-line Processing @ ImageMagick](https://imagemagick.org/script/command-line-processing.php)
 
 - [imagemin/imagemin-cli: Minify images](https://github.com/imagemin/imagemin-cli)
 

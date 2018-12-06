@@ -2,32 +2,48 @@
 
 # This script creates resized and optimized version of images from a source
 # directory.
-# The heights of the images are computed using values set by the user.
+# The heights of the images are computed using an aspect ratio and Twitter
+# Bootstrap breakpoint values.
 #
 # This script uses following commands :
+# - cut
+# - bc
 # - mogrify
 # - imagemin
 
 # user settings
 
-xs_width="320"
-xs_height="200"
+# aspect_ratio="3/2"
+aspect_ratio="4/3"
+# aspect_ratio="16/9"
 
-sm_width="640"
-sm_height="480"
-
-md_width="1024"
-md_height="768"
-
-lg_width="1600"
-lg_height="900"
-
+xs_width="576"
+sm_width="768"
+md_width="992"
+lg_width="1200"
 xl_width="1920"
-xl_height="1080"
 
 bg_max_height="1000"
 
 # start srcipt
+
+# compute respective heights given the widths
+aspect_ratio_numerator=$(echo "$aspect_ratio" | cut -d "/" -f 1)
+aspect_ratio_denominator=$(echo "$aspect_ratio" | cut -d "/" -f 2)
+
+xs_height=$(echo "576 * $aspect_ratio_denominator / $aspect_ratio_numerator" | bc)
+sm_height=$(echo "768 * $aspect_ratio_denominator / $aspect_ratio_numerator" | bc)
+md_height=$(echo "992 * $aspect_ratio_denominator / $aspect_ratio_numerator" | bc)
+lg_height=$(echo "1200 * $aspect_ratio_denominator / $aspect_ratio_numerator" | bc)
+xl_height=$(echo "1920 * $aspect_ratio_denominator / $aspect_ratio_numerator" | bc)
+
+# print computed settings
+echo "aspect_ratio : $aspect_ratio"
+echo "xs : $xs_width x $xs_height"
+echo "sm : $sm_width x $sm_height"
+echo "md : $md_width x $md_height"
+echo "lg : $lg_width x $lg_height"
+echo "xl : $xl_width x $xl_height"
 
 # process images
 mkdir -p img/xs

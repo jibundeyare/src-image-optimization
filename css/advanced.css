@@ -14,25 +14,25 @@ source, img {
     width: 100%;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 576px) {
     #bg {
         background-image: url('../img/sm-bg/ian-schneider-41925-unsplash.jpg');
     }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 768px) {
     #bg {
         background-image: url('../img/md-bg/ian-schneider-41925-unsplash.jpg');
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 992px) {
     #bg {
         background-image: url('../img/lg-bg/ian-schneider-41925-unsplash.jpg');
     }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1200px) {
     #bg {
         background-image: url('../img/xl-bg/ian-schneider-41925-unsplash.jpg');
     }
