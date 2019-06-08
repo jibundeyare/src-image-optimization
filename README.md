@@ -59,8 +59,9 @@ Pour optimiser les images du dossier `img` et créer les nouvelles images dans l
 ## Scripts bash
 
 Les scripts bash `img-optim-simple.sh` et `img-optim-advanced.sh` sont des exemples de ce qu'il est possible d'automatiser.
-
 Les sections `# user settings` permettent de personnaliser les réglages pour un projet particulier.
+
+Le script bash `clean-img.sh` permet de supprimer le contenu du dossier `img`.
 
 Il faut voir ces scripts comme des points de départ pour automatiser la génération d'images optimiséss.
 Il faudra donc surement les adapter à vos besoins.
@@ -125,6 +126,11 @@ Pour lancer le script :
     ./img-optim-advanced.sh
 
 Pour tester le résultat, voir les fichiers `advanced.html` et `css/advanced.css`.
+
+### Script bash `clean-img.sh`
+
+Attention, ce script supprime l'intégralité du contenu du dossier `img`.
+Il est pratique pour ne pas devoir supprimer « à la main » les dossiers `img/lg`, `img/lg-bg`, `img/md`, ...
 
 ## Doc
 
