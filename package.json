@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "imagemin-cli": "^4.0.0"
+    "imagemin-cli": "^4.0.1"
   }
 }
